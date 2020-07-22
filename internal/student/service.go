@@ -1,5 +1,7 @@
 package student
 
+import "fmt"
+
 type Service struct{}
 
 func Newservice() *Service {
@@ -15,6 +17,9 @@ func (s Service) NumberOfStudents(room string) (int, error) {
 
 func (s Service) CalulateGrade(point int) (string, error) {
 
+	if point > 100 {
+		return "", fmt.Errorf("Invalid grade!!!")
+	}
 	if point >= 80 {
 		return "A", nil
 	}

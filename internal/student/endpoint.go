@@ -34,7 +34,7 @@ func (e Endpoint) CalulateGrade(c echo.Context) error {
 
 	gradeString, err := e.srv.CalulateGrade(grade.Grade)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, map[string]interface{}{"api": ""})
+		return c.JSON(http.StatusInternalServerError, map[string]interface{}{"api": err.Error()})
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{"grade": gradeString})
 }
