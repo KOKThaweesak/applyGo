@@ -12,3 +12,21 @@ func (s Service) NumberOfStudents(room string) (int, error) {
 	}
 	return 0, nil
 }
+
+func (s Service) CalulateGrade(point int) (string, error) {
+
+	if point >= 80 {
+		return "A", nil
+	}
+	if point >= 70 {
+		return "B", nil
+	}
+	if point >= 60 {
+		return "C", nil
+	}
+	if point >= 50 {
+		return "D", nil
+	}
+
+	return "F", nil
+}

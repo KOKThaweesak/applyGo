@@ -36,6 +36,13 @@ func InitRoute(e *echo.Echo, cv *Configs) error {
 			Endpoint:   studentEndpoint.NumberOfStudent,
 			Middleware: nil,
 		},
+		route{
+			Group:      "student",
+			Path:       "/calgrade",
+			Method:     http.MethodGet,
+			Endpoint:   studentEndpoint.CalulateGrade,
+			Middleware: nil,
+		},
 	}
 
 	for _, rt := range routes {
