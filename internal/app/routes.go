@@ -2,6 +2,7 @@ package app
 
 import (
 	"applyGo/internal/ping"
+	"applyGo/internal/student"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -18,6 +19,7 @@ type route struct {
 func InitRoute(e *echo.Echo, cv *Configs) error {
 
 	pingEndpoint := ping.NewEndpoint()
+	studentEndpoint := student.NewEndpoint()
 	routes := []route{
 		route{
 			Group:      "",
@@ -26,6 +28,13 @@ func InitRoute(e *echo.Echo, cv *Configs) error {
 			Endpoint:   pingEndpoint.HealthCheck,
 			Middleware: []echo.MiddlewareFunc{cv.PingNotFound},
 			//Middleware: nil,
+		},
+		route{
+			Group:      "student",
+			Path:       "/number",
+			Method:     http.MethodGet,
+			Endpoint:   studentEndpoint.NumberOfStudent,
+			Middleware: nil,
 		},
 	}
 
