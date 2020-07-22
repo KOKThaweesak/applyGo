@@ -1,0 +1,9 @@
+enable_ping: true
+
+mongo:
+    addresses:
+        - localhost:30001
+
+    username: 
+    password: 
+    database: "test"
