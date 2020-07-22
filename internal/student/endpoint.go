@@ -29,7 +29,7 @@ type GradeInput struct {
 func (e Endpoint) CalulateGrade(c echo.Context) error {
 	grade := &GradeInput{}
 	if err := c.Bind(grade); err != nil {
-		return c.JSON(http.StatusNotFound, map[string]interface{}{})
+		return c.JSON(http.StatusInternalServerError, map[string]interface{}{})
 	}
 
 	gradeString, err := e.srv.CalulateGrade(grade.Grade)
